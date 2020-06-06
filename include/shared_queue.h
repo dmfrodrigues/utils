@@ -27,7 +27,8 @@ public:
     }
     T pop(){
         std::lock_guard<std::mutex> guard(m);
-        if(std::queue<T,Container>::empty()) throw std::logic_error("shared_queue::pop : no element to pop");
+        if(std::queue<T,Container>::empty())
+            throw std::logic_error("shared_queue::pop : no element to pop");
         T res = std::queue<T,Container>::front();
         std::queue<T,Container>::pop();
         return res;
